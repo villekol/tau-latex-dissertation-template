@@ -18,6 +18,15 @@ pdflatex main.tex
 
 Go ahead and try to compile the template as is. The finished PDF file contains some directions for using the templates. More helpful instructions can be found in the files as comments.
 
+This template is developed and maintained in Overleaf, and checked to compile under TeX Live 2020 (should also compile with up-to-date MikTeX). Please check your LaTeX distribution version and install the newest versions of the following packages if you run into issues while compiling.
+
+* `pdfx`, `ìnputenc`, `babel`, `csquotes`, `hyperref`
+* `fontenc`, `newtxmath`, `ebgaramond-math`, `garamondlibre`
+* `geometry`, `fancyhdr`, `setspace`, `xcolor`, `titlesec`, `titletoc`
+* `enumitem`, `graphicx`, `caption`, `listings`, `pdfpages`
+* `biblatex`, `glossaries`
+* `accsupp`, `axessibility`, `pdfcomment`
+
 ## Bugs and improvements
 
 Please use the Issues dialogue above if you have found something in the template that needs fixing, or if you have a suggestion for improvement. Do NOT, however, ask for usage instructions there, but rather contact the maintainer directly. See `taudissertation.cls` for more information.

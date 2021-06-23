@@ -258,20 +258,6 @@
     labelsep={quad}]{caption}
 \renewcommand{\arraystretch}{1.25}
 
-% (SI) unit handling
-\RequirePackage{siunitx}
-
-\sisetup{
-    detect-all,
-    exponent-product=\cdot
-}
-
-\if@langenglish
-    \sisetup{output-decimal-marker={.}}
-\else
-    \sisetup{output-decimal-marker={,}}
-\fi
-
 % Code listing handling
 \RequirePackage{listings}
 
@@ -351,6 +337,9 @@
 \includepdfset{%
     offset={0.5\bindingoffsetwidth} 0pt
 }
+
+% Image alt texts
+\RequirePackage{pdfcomment}
 
 % Automated math alt texts.
 \RequirePackage[accsupp]{axessibility}
