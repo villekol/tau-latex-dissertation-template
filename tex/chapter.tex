@@ -1,0 +1,102 @@
+This dissertation template aims to be as complete a guide as possible for writing a Tampere University PhD theses. For the most up to date instructions, visit the \href{https://libguides.tuni.fi/dissertationpublishing}{library webpage} for dissertations. The purpose of the present short introduction is to familiarize you to some of the less obvious \LaTeX-stuff that the official instructions do not cover. We do, however, assume that you are already familiar with the \LaTeX{} system and have written something using it.
+
+\section{Structure of the template}
+
+The template is an example of a multifile \LaTeX{} project, where there is a single master file (\texttt{main.tex}). This file is responsible for including all the relevant content to the final PDF, which is the result of running \texttt{pdflatex} and other commands on it. The files you mostly need to worry about should be put into the directory \texttt{/tex/}, and they include one content file for each of the following:
+\begin{itemize}
+\item dedication (if used),
+\item preface/acknowledgments (acknowledgements in UK English),
+\item abstracts (main language and possibly your own language),
+\item abbreviations*,
+\item chapters in the main body of the work,
+\item bibliography*,
+\item appendices (if used).
+\end{itemize}
+Here * signifies a specially formatted file, others are simple \LaTeX{} text files.
+
+In addition to the above the template contains a directory (\texttt{/img/}) where you could put anny image files to include in the work, a template version history file (not always up to date), the class file \texttt{taudissertation.cls} that defines the styles used in the document, and most importantly a directory called \texttt{/publications/}. This is another important place to consider when using this template to write most dissertations. If you are writing a monograph, you can just ignore or even delete it. Otherwise this directory is meant to contain
+\begin{itemize}
+\item the PDF files of your own publications included in the dissertation,
+\item a separate bibliography file for specifying their bibliographic information.
+\end{itemize}
+We will come back to how this directory functions later when considering the relevant parts of your dissertation.
+
+In addition to the supplied file directory structure, this template specifies certain parts that your dissertation should contain. The structure of the \texttt{main.tex} file reflects this division, and can be described from top to bottom as follows.
+\begin{enumerate}
+\item The \emph{pre-}preamble. Normally, a \LaTeX{} source file begins with the command \texttt{\textbackslash documentclass[\ldots]\{\ldots\}}. This template adds commented instructions \emph{before} this and more crucially a mechanism for specifying PDF document metadata there.
+\item The preamble. Everything that comes between \texttt{\textbackslash documentclass[\ldots]\{\ldots\}} and \texttt{\textbackslash begin\{document\}}. Consists of mostly template-related stuff you can modify for your own needs, but also the place for you to include your own packages or define your own commands.
+\item The front matter. You are essentially writing a book, and it is customary to put everything between title pages and content descriptions in a separate part where the pages have Roman numbering. In a dissertation this part also contains information aboout your own publications (except in monographs).
+\item The main matter. Basically everything else from chapters to appendices. Writing this part means writing regular \LaTeX.
+\item The ``publication matter''. A special part of dissertations, where you put your own publications. Adding them from external PDF files along with cover pages is mostly automated in this template. (Obviously not needed in monographs.)
+\end{enumerate}
+Equipped with this information you should be able to understand and use the template easily. Following the example set by the \texttt{main.tex} file is a good idea for starting the work.
+
+\section{Styles in the template}
+
+The shortest possible description of these is that everything has been set up to match the official Word template for Tampere University dissertations as closely as possible in the \LaTeX{} world. Therefore there should be no need to change anything. If something does, however, seem odd or wrong, please contact the maintainer (contact information at the top of \texttt{taudissertation.cls}) if you need help sorting it out, or if it is something that should be updated in the template.
+
+Some of the packages that are used in the template (especially regarding accessibility of the PDF document) are relatively new to the most common \LaTeX{} distributions. The template has been tested to work as expected in the Overleaf environment with the \TeX{} Live 2020 compiler. If you encounter issues compiling the basic template on a local system, please check that you
+\begin{enumerate}
+\item have an up-to-date \LaTeX{} distribution,
+\item are using the correct commands for compiling (see top of \texttt{main.tex}).
+\end{enumerate}
+
+\section{Accessibility considerations}
+
+The Finnish law, following the European Union directive 2016/2102 on accessibility of the websites and mobile applications of public sector bodies, demands that any electronic publications are made appropriately accessible (within reason). This also applies to your dissertation, and therefore you should know or find out what is expected of you and your work. The writer or maintainer of the template assumes no responsibility on behalf of dissertation authors!
+
+This template aims to help as much as possible with improving the accessibility of the final document. Unfortunately, as of 2021 (and most likely up to 2024), the \LaTeX{} system is incapable of producing PDF files that would conform to the accessible PDF/UA standard, or even the slightly less demanding university guidelines. The main issue is that \LaTeX{} carefully throws away much of the needed structural information as soon as possible to save memory (which was a real issue back in the 80's and 90's). This does not mean that all is lost, and you should still strive for maximum accessibility!
+
+As with the required styles in dissertations, this template tries to take care of many things automatically for you. The few things you do need to take into account while writing are
+\begin{enumerate}
+\item the language you use is clear and unambiguous, and that nothing essential is conveyed through visual formatting only,
+\item alternative texts (or alt texts) for \emph{all} images you include in the thesis,
+\item required document metadata that include the title and the main language of your work,
+\item compatibility of mathematics environment with the automated alt text solution.
+\end{enumerate}
+The instructions for addressing these are as follows.
+\begin{enumerate}
+\item Do as was described. Use external services for assessing the easy-to-read nature of your text, if necessary.
+\item Use the command \texttt{\textbackslash pdftooltip\{\ldots\}\{\ldots\}} from the \texttt{pdfcomment} package (included automatically).
+\begin{verbatim}
+\begin{figure}
+\pdftooltip{\includegraphics[...]{...}}%
+{Figure. This alternative text describes
+what seeing users see in the image.}
+\caption{Figure caption}
+\label{fig:somelabel}
+\end{figure}
+\end{verbatim}
+Notice that the caption and the alternative text of an image serve entirely different purposes, and there for the alt text should never be just a copy of the caption! (Also screen readers will always read the caption in addition to the alt text.) Be verbose in the alt texts, but try to focus on the most essential meanings conveyed by the image.
+\item Always keep the document metadata fields in the pre-preamble of \texttt{main.tex} up-to-date.
+\item Never use the old \TeX{} style \verb+$...$+ and \verb+$$...$$+ environments for math, and instead use the \LaTeX{} style \verb+\(...\)+ and \verb+\[...\]+. The double dollar display math should never be used anyway.
+
+Most of the math environments from \texttt{amsmath}, such as \texttt{equation}, \texttt{equation*} and \texttt{align}, are fine to use and get correct alt texts automatically. In contrast, no math environment from a package other than \texttt{amsmath} is supported! The alternative text for all mathematics environments is the \LaTeX{} source code, until a better solution arrives.
+\end{enumerate}
+
+\subsection{Subsection}
+
+Finally, here is an example of a subsection with some float examples to fill the table of contents.
+
+\begin{figure}
+    \centering
+    \caption{Figure caption}
+\end{figure}
+
+\begin{table}
+    \centering
+    \caption{Table caption}
+\end{table}
+
+\renewcommand{\lstlistingname}{Program}
+\lstinputlisting
+    [float,
+    caption={Program caption},
+    label=prog:esimerkki,
+    language=C,
+    numbers=left]
+    {tex/example.c}
+
+\subsubsection{Subsubsection}
+
+And finally also a subsubsection where we put an example citation \cite{somecitation}. The only necessary command with numeric citation styles (numeric, ieee) is \verb+\cite{...}+, but with author-year styles (authoryear, apa) you'll want to test at least \verb+\parencite{...}+, \verb+\parencite*{...}+, \verb+\textcite{...}+ and \verb+\citeauthor{...}+. The last could also be useful for numeric styles on some occasions.

@@ -1,0 +1,265 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Congratulations, you've made an excellent choice
+%% of writing your Tampere University dissertation using
+%% the LaTeX system. This document attempts to be
+%% as complete a template as possible to let you focus
+%% on the most important part: the writing itself.
+%% Thus the details regarding the visual appearance
+%% have already been worked out for you!
+%%
+%% I sincerely hope you will find this template useful
+%% in completing your dissertation project. I've tried to
+%% add comments (followed by the % sign) to clarify
+%% the structure and purpose of some of the commands.
+%% Most of the magic happens in the file
+%% taudissertation.cls, which you are more than welcome
+%% to take a look at. Just refrain from editing it
+%% in the most crucial versions of the dissertation!
+%%
+%% I wish you and your dissertation project the best
+%% of luck! If this template causes you trouble along
+%% the way or if you've any suggestions for improving it,
+%% please contact me via email at
+%% 
+%% ville.koljonen (at) tuni.fi.
+%%
+%% Yours,
+%%
+%% Ville Koljonen
+%%
+%% PS. This template or its associated class file don't
+%% come with a warranty. The content is provided as is,
+%% without even the implied promise of fitness to the
+%% mentioned purpose. You, as the author of the dissertation,
+%% are responsible for the entire work, including the
+%% provided material. No one else is liable to you for
+%% any damage inflicted on you or your thesis, were it
+%% caused by using this template or not.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% INSTRUCTIONS FOR COMPILING THE DOCUMENT %%%%%
+%% Overleaf: just click Recompile.
+%% Terminal:
+%%  1. pdflatex main.tex
+%%  2. makeindex -s main.ist -t main.glg -o main.gls main.glo
+%%  3. biber main
+%%  4. pdflatex main.tex
+%%  5. pdflatex main.tex
+%% Similar sequence of commands is also required
+%% in LaTeX specific editors.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% METADATA %%%%%
+%% Always keep the following metadata up to date!
+%% This is important for your PDF file to comply
+%% to accessibility standards.
+%% (And yes, this information must remain here,
+%% before \documentclass[...]{...}.)
+
+%% Unfortunately, if you update this metadata,
+%% the changes won't make it to the PDF before
+%% you've also deleted the auxiliary files
+%% (cleared the cached files).
+%% Always check your metadata using a PDF reader
+%% such as Acrobat Reader.
+
+% \Title and \Language are mandatory,
+% others desirable
+% The appropriate Finnish language code is 'fi',
+% UK English is en-UK
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+\Title{Title}
+\Author{Firstname Lastname}
+\Language{en-US}
+\end{filecontents*}
+
+\pdfminorversion=6
+
+%%%%% PREAMBLE %%%%%
+
+%%%%% Document class declaration.
+% The possible optional arguments are
+%   finnish - thesis in Finnish (default)
+%   english - thesis in English
+%   numeric - citations in numeric style (default)
+%   authoryear - citations in author-year style
+%   apa - citations in APA 7 style (English only)
+%   ieee - citations in IEEE style (English only)
+% Example: \documentclass[english, authoryear]{tauthesis}
+%          thesis in English with author-year citations
+\documentclass[english]{taudissertation}
+
+% The glossaries package may throw a warning:
+% No language module detected for 'finnish'.
+% You can safely ignore this. All other
+% warnings should be taken care of!
+
+%%%%% Your packages.
+% Before adding packages, see if they can be found
+% in taudissertation.cls already. If you're not sure
+% that you need a certain package, don't include it
+% in the document! This can dramatically reduce
+% compilation time.
+
+\usepackage{lipsum}
+
+%\let\circledS\undefined
+\usepackage{amsmath}
+
+%%%%% Your commands.
+
+% Print verbatim LaTeX commands
+\newcommand{\verbcommand}[1]{\texttt{\textbackslash #1}}
+
+%%%%% Glossary information.
+
+% Use the following lines ONLY if you need more
+% than one glossary. The first argument specifies
+% a type label for the glossary and the second
+% the displayed name.
+% \newglossary*{symbs}{Symbols}
+% \newglossary{label}{Displayed name}
+% ...
+
+\makeglossaries
+
+% Use this line if using the default glossary.
+% Otherwise comment out.
+\loadglsentries[main]{tex/glossary.tex}
+
+% Use this line if using more than one glossary.
+% Otherwise comment out.
+% \loadglsentries[symbs]{tex/glossary2.tex}
+
+%%%%% Citation information.
+
+% Use a separate .bib file to store bibliographic
+% information relating to own publications.
+% If you're writing a monograph, simply comment
+% this out.
+\addbibresource{publications/publications.bib}
+
+% References for the dissertation.
+\addbibresource{tex/references.bib}
+
+\hypersetup{hidelinks}
+
+\begin{document}
+
+%%%%% FRONT MATTER %%%%%
+
+\frontmatter
+
+% Enter the title and a possible subtitle
+% of your work along with your name here.
+\title{Title}
+\subtitle{Subtitle}
+\author{Firstname Lastname}
+
+% Notice that this is only included for
+% convenience, use the separate title page
+% template to produce the final book cover pages.
+\maketitle
+
+% Write the dedication into a separate file.
+% Comment out if not applicable.
+\dedication{tex/dedication.tex}
+
+% Write either 'Preface' ('Esipuhe') or
+% 'Acknowledgements' ('Kiitokset').
+% Write the title of this section as the first
+% argument and the file name as the second.
+\preface{Preface/Acknowledgements}{tex/preface.tex}
+
+% Write the abstracts, the first one in the
+% main language of the dissertation.
+% Comment the other one out if not applicable
+% (e.g. international students).
+\abstract{tex/abstract.tex}
+\otherabstract{tex/otherabstract.tex}
+
+% Automatically updating ToC.
+\tableofcontents
+
+% Print lists of figures, tables and programs,
+% if necessary. Otherwise comment out.
+% Use the listings package for all code listings.
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+% Misc stuff related to how the glossary is displayed.
+\glsaddall
+\setglossarystyle{long}
+\setlength{\glsdescwidth}{0.75\textwidth}
+\renewcommand*{\glsgroupskip}{}
+
+% Print the default glossary of abbreviations,
+% if necessary. Otherwise comment out.
+% The appropriate Finnish variant is 'Lyhenteet'
+\printglossary[title=Abbreviations]
+
+% Print more than one glossary with these lines.
+% Otherwise comment out.
+% \printglossary[type=symbs]
+% \printglossary[type=label]
+% ...
+
+% Print the list of original publications.
+% The format of the bibliographic information
+% is similar to the entries in the bibliography.
+% Comment out if writing a monograph.
+\listofpublications
+% \clearpage
+\authorcontribution{tex/authorcontribution.tex}
+
+%%%%% MAIN MATTER %%%%%
+
+\mainmatter
+
+% Write each chapter into a separate file.
+% Add a \label right after the chapter name
+% if you need to reference it later.
+
+\chapter{Using this template}
+\label{ch:firstchapter}
+\input{tex/chapter.tex}
+
+% Add other chapters similary.
+
+% Print the list of references.
+%\setlength{\labelnumberwidth}{3em}
+\printbibliography[heading=bibintoc, notkeyword={thisdissertation}]
+
+% Write the appendices as chapters between
+% \begin{appendices} and \end{appendices}.
+
+\begin{appendices}
+
+\chapter{Appendix}
+\label{ch:appendix}
+\input{tex/appendix.tex}
+
+\end{appendices}
+
+%%%%% PUBLICATION MATTER %%%%%
+% Comment this part out completely,
+% if writing a monograph.
+
+\publicationmatter
+
+% Include the publications using the command
+%
+% \publication{<citeID>}{<path/to/article/pdf>}
+%
+% This automatically prints the publication
+% cover pages and appends the article pdf
+% to this dissertation. Remember to include
+% them in the same order as in the list of
+% publications!
+
+\publication{article1}{publications/article-1.pdf}
+\publication{article2}{publications/article-2.pdf}
+\publication{article3}{publications/article-3.pdf}
+
+\end{document}
