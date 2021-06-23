@@ -27,9 +27,11 @@ This template is developed and maintained in Overleaf, and checked to compile un
 * `biblatex`, `glossaries`
 * `accsupp`, `axessibility`, `pdfcomment`
 
+You can find the template in [Overleaf](https://www.overleaf.com/read/vsvnkgcfgxmz) as well. This is, however, the development version and more likely to be unstable or even broken!
+
 ## Bugs and improvements
 
-Please use the Issues dialogue above if you have found something in the template that needs fixing, or if you have a suggestion for improvement. Do NOT, however, ask for usage instructions there, but rather contact the maintainer directly. See `taudissertation.cls` for more information.
+Please use the **Issues** dialogue above if you have found something in the template that needs fixing, or if you have a suggestion for improvement. If you instead have something to ask about the template (clarifications on how to use it, how to accomplish something, etc.), please post your question to **Discussions**. Be sure to use the Q&A category.
 
 All feedback (preferably in English, Finnish works too) is most welcome!
 

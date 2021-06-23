@@ -14,9 +14,9 @@
 % This work has the LPPL maintenance status `maintained'.
 % 
 % The Current Maintainer of this work is
-%   Ville Koljonen (ville.koljonen (at) tuni.fi)
+%   Ville Koljonen
 %
-% This work consists of the files tauthesis.cls.
+% This work consists of the files taudissertation.cls.
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{taudissertation}
