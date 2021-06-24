@@ -266,6 +266,23 @@
 % List of symbols and abbreviations
 \RequirePackage[automake, nonumberlist, nopostdot]{glossaries}
 
+\newlength\glsnamewidth
+\newglossarystyle{taulong}{%
+    \setglossarystyle{long}%
+    \renewenvironment{theglossary}{%
+      \tablehead{}%
+      \tabletail{}%
+      \begin{longtable}{p{\glsnamewidth}p{\glsdescwidth}}%
+    }{%
+      \end{longtable}%
+    }%
+    \renewcommand{\glossentry}[2]{%
+    \raggedright
+    \glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+    \glossentrydesc{##1}\glspostdescription\space ##2\tabularnewline
+    }%
+}
+
 % Table of contents formatting
 \RequirePackage{titletoc}
 
