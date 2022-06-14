@@ -37,6 +37,10 @@ All feedback (preferably in English, Finnish works too) is most welcome!
 
 ## Version history
 
+###### Unpublished
+
+* Added option for British English language
+
 ###### Version 2.0
 
 * Complete overhaul of the citation system, leaving the author in charge of all modifications to the standard styles.
