@@ -41,6 +41,11 @@
     \renewcommand{\@mainlanguage}{english}
     \renewcommand{\@otherlanguage}{finnish}
 }
+\DeclareOption{british}{%
+    \@langenglishtrue
+    \renewcommand{\@mainlanguage}{british}
+    \renewcommand{\@otherlanguage}{finnish}
+}
 \DeclareOption{finnish}{%
     \@langenglishfalse
     \renewcommand{\@mainlanguage}{finnish}
